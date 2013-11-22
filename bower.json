@@ -1,0 +1,25 @@
+{
+  "name": "numerals-web",
+  "version": "0.1.0",
+  "authors": [
+    "Tyler Collard <tcollard@gmail.com>"
+  ],
+  "description": "A Roman Numeral conversion site",
+  "main": "index.html",
+  "license": "MIT",
+  "private": true,
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "numerals": "git@github.com:tcollard/numerals.git",
+    "requirejs": "~2.1.9",
+    "angular": "~1.2.1",
+    "requirejs-text": "~2.0.10",
+    "angular-route": "~1.2.1"
+  }
+}
