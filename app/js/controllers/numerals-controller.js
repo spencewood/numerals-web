@@ -1,5 +1,7 @@
 define(function(require){
     return function($scope, $http, numeralsService){
+
+        console.log('here');
         $scope.numeral = '';
         $scope.number = '';
 

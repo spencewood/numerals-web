@@ -1,0 +1,13 @@
+{
+  "name": "numerals-web",
+  "version": "0.1.0",
+  "description": "A roman numerals conversion site",
+  "repository": {
+    "type": "git",
+    "url": "git://github.com/tcollard/numerals-web.git"
+  },
+  "devDependencies": {
+    "grunt": "*",
+    "grunt-requirejs": "*"
+  }
+}

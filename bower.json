@@ -20,6 +20,7 @@
     "requirejs": "~2.1.9",
     "angular": "~1.2.1",
     "requirejs-text": "~2.0.10",
-    "angular-route": "~1.2.1"
+    "angular-route": "~1.2.1",
+    "bootstrap": "~3.0.2"
   }
 }
