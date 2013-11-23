@@ -1,7 +1,10 @@
-define(['angular', 'services'], function(angular, services) {
+define(function(require){
 	'use strict';
 
-  /* Directives */
+    var angular = require('angular');
+    var services = require('services');
+
+    /* Directives */
 
 	angular.module('numeralsWeb.directives', ['numeralsWeb.services'])
 		.directive('appVersion', ['version', function(version) {
