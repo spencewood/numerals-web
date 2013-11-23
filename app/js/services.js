@@ -6,7 +6,7 @@ define(function(require){
 	
     /* Services */
 
-	angular.module('numeralsWeb.services', [])
+	angular.module('numeralsweb.services', [])
 		.factory('numeralsService', function(){
             return numeralsService;
         })

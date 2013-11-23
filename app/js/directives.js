@@ -6,7 +6,7 @@ define(function(require){
 
     /* Directives */
 
-	angular.module('numeralsWeb.directives', ['numeralsWeb.services'])
+	angular.module('numeralsweb.directives', ['numeralsweb.services'])
 		.directive('appVersion', ['version', function(version) {
 			return function(scope, elm, attrs) {
 				elm.text(version);

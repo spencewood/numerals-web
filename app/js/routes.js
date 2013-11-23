@@ -1,5 +1,8 @@
-define(['angular', 'app'], function(angular, app) {
+define(function(require){
 	'use strict';
+
+	var angular = require('angular');
+	var app = require('app');
 
 	return app.config(['$routeProvider', function($routeProvider) {
 		$routeProvider.when('/view1', {

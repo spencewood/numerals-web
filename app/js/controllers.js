@@ -7,6 +7,6 @@ define(function(require){
 
     /* Controllers */
     
-    return angular.module('numeralsWeb.controllers', ['numeralsWeb.services'])
+    return angular.module('numeralsweb.controllers', ['numeralsweb.services'])
         .controller('numeralsController', numeralsController);
 });
