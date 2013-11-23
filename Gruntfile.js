@@ -6,7 +6,7 @@ module.exports = function(grunt) {
         requirejs: {
             compile: {
                 options: {
-                    name: 'app',
+                    name: 'main',
                     baseUrl: 'app/js',
                     mainConfigFile: 'app/js/main.js',
                     out: 'optimized.js',
@@ -17,8 +17,9 @@ module.exports = function(grunt) {
                             beautify: false
                         },
                         warnings: false,
-                        mangle: true
-                    }
+                        mangle: false
+                    },
+                    wrap: true
                 }
             }
         }

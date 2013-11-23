@@ -16,11 +16,10 @@ require({
     'routes'
 ], function(angular, app, routes) {
     'use strict';
-    
+
     var $html = angular.element(document.getElementsByTagName('html')[0]);
 
     angular.element().ready(function(){
-        console.log('bootstrap');
         $html.addClass('ng-app');
         angular.bootstrap($html, [app['name']]);
     });
