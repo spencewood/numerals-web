@@ -40,7 +40,7 @@ module.exports = function(grunt) {
                 },
                 files: {
                     'dist/css/app.css': [
-                        'bower_components/dist/css/bootstrap.css',
+                        'bower_components/bootstrap/dist/css/bootstrap.css',
                         'app/css/main.css'
                     ]
                 }
