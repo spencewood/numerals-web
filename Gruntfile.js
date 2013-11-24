@@ -47,24 +47,73 @@ module.exports = function(grunt) {
             }
         },
         copy: {
-            dist: {
-                expand: true,
-                flatten: true,
-                src: ['app/img/**'],
-                dest: 'dist/img/',
-                filter: 'isFile'
+            index: {
+                files: [
+                    {
+                        expand: true,
+                        flatten: true,
+                        src: ['app/img/*'],
+                        dest: 'dist/img',
+                        filter: 'isFile'
+                    },
+                    {
+                        expand: true,
+                        flatten: true,
+                        src: ['build/index.php'],
+                        dest: 'dist/',
+                        filter: 'isFile'
+                    }
+                ]
+
             }
         },
         devserver: {
             default: {
                 file: 'index.html'
-            },
-            distserver: {
-                file: 'dist/index.html'
             }
         },
         jshint: {
             all: ['Gruntfile.js', 'app/js/**/*.js']
+        },
+        shell: {
+            cleandist: {
+                command: 'rm -rf *',
+                options: {
+                    execOptions: {
+                        cwd: 'dist'
+                    }
+                }
+            },
+            gitcommit: {
+                command: [
+                    'git add .',
+                    'git add -u',
+                    'git commit -m "Deploy"'
+                ].join('&&'),
+                options: {
+                    execOptions: {
+                        cwd: 'dist'
+                    }
+                }
+            },
+            masterpush: {
+                command: 'git push -f origin dist',
+                options: {
+                    stdout: true,
+                    execOptions: {
+                        cwd: 'dist'
+                    }
+                }
+            },
+            herokupush: {
+                command: 'git push -f heroku dist:master',
+                options: {
+                    stdout: true,
+                    execOptions: {
+                        cwd: 'dist'
+                    }
+                }
+            }
         }
     });
 
@@ -74,7 +123,24 @@ module.exports = function(grunt) {
     grunt.loadNpmTasks('grunt-processhtml');
     grunt.loadNpmTasks('grunt-contrib-copy');
     grunt.loadNpmTasks('grunt-contrib-cssmin');
+    grunt.loadNpmTasks('grunt-shell');
 
-    grunt.registerTask('default', ['devserver']);
-    grunt.registerTask('build', ['jshint', 'requirejs', 'cssmin', 'copy', 'processhtml']);
+    grunt.registerTask('default', 'Development server', ['devserver']);
+    grunt.registerTask('build', 'Build dist folder', [
+        'shell:cleandist',
+        'jshint',
+        'requirejs',
+        'cssmin',
+        //'copy:img',
+        'copy:index',
+        'processhtml'
+    ]);
+    grunt.registerTask('deploy', 'Heroku deployment', function(){
+        grunt.task.run([
+            'build',
+            'shell:gitcommit',
+            'shell:masterpush',
+            'shell:herokupush'
+        ]);
+    });
 };
