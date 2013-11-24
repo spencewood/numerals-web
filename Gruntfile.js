@@ -56,8 +56,11 @@ module.exports = function(grunt) {
             }
         },
         devserver: {
-            server: {
+            default: {
                 file: 'index.html'
+            },
+            distserver: {
+                file: 'dist/index.html'
             }
         },
         jshint: {
@@ -73,5 +76,5 @@ module.exports = function(grunt) {
     grunt.loadNpmTasks('grunt-contrib-cssmin');
 
     grunt.registerTask('default', ['devserver']);
-    grunt.registerTask('build', ['requirejs', 'cssmin', 'copy', 'processhtml']);
+    grunt.registerTask('build', ['jshint', 'requirejs', 'cssmin', 'copy', 'processhtml']);
 };
