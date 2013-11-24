@@ -29,7 +29,7 @@ module.exports = function(grunt) {
             },
             dist: {
                 files: {
-                    'dist/index.html': ['index.html']
+                    'dist/app.html': ['index.html']
                 }
             }
         },
