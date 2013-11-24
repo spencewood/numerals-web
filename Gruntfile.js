@@ -9,7 +9,7 @@ module.exports = function(grunt) {
                     name: 'main',
                     baseUrl: 'app/js',
                     mainConfigFile: 'app/js/main.js',
-                    out: 'optimized.js',
+                    out: 'dist/js/app.js',
                     almond: true,
                     optimize: 'uglify2',
                     uglify2: {
@@ -22,11 +22,56 @@ module.exports = function(grunt) {
                     wrap: true
                 }
             }
+        },
+        processhtml: {
+            options: {
+                data: {}
+            },
+            dist: {
+                files: {
+                    'dist/index.html': ['index.html']
+                }
+            }
+        },
+        cssmin: {
+            combine: {
+                options: {
+                    report: 'min'
+                },
+                files: {
+                    'dist/css/app.css': [
+                        'bower_components/dist/css/bootstrap.css',
+                        'app/css/main.css'
+                    ]
+                }
+            }
+        },
+        copy: {
+            dist: {
+                expand: true,
+                flatten: true,
+                src: ['app/img/**'],
+                dest: 'dist/img/',
+                filter: 'isFile'
+            }
+        },
+        devserver: {
+            server: {
+                file: 'index.html'
+            }
+        },
+        jshint: {
+            all: ['Gruntfile.js', 'app/js/**/*.js']
         }
     });
 
+    grunt.loadNpmTasks('grunt-contrib-jshint');
+    grunt.loadNpmTasks('grunt-devserver');
     grunt.loadNpmTasks('grunt-requirejs');
+    grunt.loadNpmTasks('grunt-processhtml');
+    grunt.loadNpmTasks('grunt-contrib-copy');
+    grunt.loadNpmTasks('grunt-contrib-cssmin');
 
-    grunt.registerTask('default', ['requirejs']);
-    grunt.registerTask('build', 'requirejs');
+    grunt.registerTask('default', ['devserver']);
+    grunt.registerTask('build', ['requirejs', 'cssmin', 'copy', 'processhtml']);
 };

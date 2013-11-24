@@ -2,19 +2,29 @@
 <html>
     <head>
         <title>Roman Numeral Converter</title>
+        <!-- build:css css/app.css -->
+        <link rel="stylesheet" href="bower_components/bootstrap/dist/css/bootstrap.css">
         <link rel="stylesheet" href="app/css/main.css">
+        <!-- /build -->
     </head>
     <body>
-        <div ng-controller="numeralsController">
-            <label for="numeral-input">numeral:</label><input id="numeral-input" ng-model="numeral">
-            <label for="number-input">number:</label><input id="number-input" ng-model="number">
-            <div ng-click="decrease(1)">
-                &lt;
-            </div>
-            <div ng-click="increase(1)">
-                &gt;
+        <div class="container">
+            <div ng-controller="numeralsController">
+                <label for="numeral-input">numeral:</label><input id="numeral-input" ng-model="numeral">
+                <label for="number-input">number:</label><input id="number-input" ng-model="number">
+                <div ng-click="decrease(1)">
+                    &lt;
+                </div>
+                <div ng-click="increase(1)">
+                    &gt;
+                </div>
             </div>
         </div>
-        <script src="optimized.js"></script>
+        <!-- build:remove:dist -->
+        <script data-main="app/js/main" src="bower_components/requirejs/require.js"></script>
+        <!-- /build -->
+        <!-- build:template:dist
+        <script src="js/app.js"></script>
+        /build -->
     </body>
 </html>

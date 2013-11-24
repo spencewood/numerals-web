@@ -8,6 +8,11 @@
   },
   "devDependencies": {
     "grunt": "*",
-    "grunt-requirejs": "*"
+    "grunt-requirejs": "*",
+    "grunt-processhtml": "*",
+    "grunt-devserver": "*",
+    "grunt-contrib-jshint": "*",
+    "grunt-contrib-cssmin": "~0.7.0",
+    "grunt-contrib-copy": "~0.4.1"
   }
 }
