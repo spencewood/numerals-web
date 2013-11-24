@@ -4,17 +4,19 @@
         <title>Roman Numeral Converter</title>
         <link rel="stylesheet" href="css/app.css">
     </head>
-    <body>
+    <body ng-controller="numeralsController">
         <div class="container">
-            <div ng-controller="numeralsController">
-                <label for="numeral-input">numeral:</label><input id="numeral-input" ng-model="numeral">
-                <label for="number-input">number:</label><input id="number-input" ng-model="number">
-                <div ng-click="decrease(1)">
-                    &lt;
-                </div>
-                <div ng-click="increase(1)">
-                    &gt;
-                </div>
+            <div class="input-group">
+                <input type="text" class="form-control" placeholder="number" id="number-input" ng-model="number">
+            </div>
+            <div class="input-group">
+                <input type="text" class="form-control" placeholder="numeral" id="numeral-input" ng-model="numeral">
+            </div>
+            <div ng-click="decrease(1)">
+                &lt;
+            </div>
+            <div ng-click="increase(1)">
+                &gt;
             </div>
         </div>
         <script src="js/app.js"></script>
